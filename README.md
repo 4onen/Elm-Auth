@@ -18,7 +18,7 @@ Username is **test**
 password is **password**
 
 ## Lenses vs TEA
-Lenses (CoState CoMonads) are generally used to change or retrieve values
+Lenses (CoState CoMonads Coalgebras) are generally used to change or retrieve values
 tersely within large nested structures. In the case of Elm, these
 structures may be considered an anti pattern in that the elm runtime
 itself is almost a State Monad Transformer.
