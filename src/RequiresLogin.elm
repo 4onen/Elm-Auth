@@ -18,7 +18,7 @@ update : Jwt -> Msg -> Model -> (Model, Cmd Msg)
 update token msg model =
     case msg of
         NoOp ->
-            model ! []
+            (model, Cmd.none)
 
 
 view : Jwt -> Model -> Html Msg

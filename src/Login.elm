@@ -36,10 +36,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Username s ->
-            { model | username = s } ! []
+            ({ model | username = s },Cmd.none)
 
         Password s ->
-            { model | password = s } ! []
+            ({ model | password = s },Cmd.none)
 
 
 view : Model -> Html Msg

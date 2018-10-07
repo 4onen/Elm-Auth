@@ -53,14 +53,13 @@ type Msg
     | LoginResponse (Result String String)
 
 
-init : ( Model, Cmd Msg )
-init =
-    { jwt = Nothing
+init : () -> ( Model, Cmd Msg )
+init () =
+    ({ jwt = Nothing
     , login = Login.init
     , error = ""
     , loginRequiredModel = ()
-    }
-        ! []
+    }, Cmd.none)
 
 
 
@@ -90,18 +89,18 @@ update msg model =
                         |> Tuple.mapSecond (Cmd.map RequiresLoginMsg)
 
                 Nothing ->
-                    { model | error = "You are not logged in!" } ! []
+                    ({ model | error = "You are not logged in!" }, Cmd.none)
 
         SubmitLogin ->
-            model ! [ submitLogin model.login ]
+            (model, submitLogin model.login)
 
         LoginResponse result ->
             case result of
                 Ok jwt ->
-                    { model | jwt = Just jwt } ! []
+                    ({ model | jwt = Just jwt },Cmd.none)
 
                 Err e ->
-                    { model | error = e } ! []
+                    ({ model | error = e },Cmd.none)
 
 
 

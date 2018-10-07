@@ -1,11 +1,11 @@
-import Html exposing (..)
+import Browser
 
 import App exposing (Model, Msg)
 
 
-main : Program Never Model Msg
+main : Program () Model Msg
 main =
-    Html.program
+    Browser.element
         { init = App.init
         , view = App.view
         , update = App.update
